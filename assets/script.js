@@ -9,6 +9,16 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+
+var saveBtn = $('.saveBtn');
+
+saveBtn.on('click', function(event) {
+  event.preventDefault();
+  var hourX = $(this).parent().attr('id');
+  var todoInput = $(this).parent().eq(1).val();
+  localStorage.setItem(hourX, todoInput);
+})
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -18,48 +28,48 @@ $(function () {
   var currentHour = dayjs().format('h');
   console.log(currentHour);
   if (currentHour === '9') {
-    $('#9').addClass('present');
-    $('#10').addClass('future');
-    $('#11').addClass('future');
-    $('#12').addClass('future');
-    $('#13').addClass('future');
-    $('#14').addClass('future');
-    $('#15').addClass('future');
-    $('#16').addClass('future');
-    $('#17').addClass('future');
+    $('#hour-9').addClass('present');
+    $('#hour-10').addClass('future');
+    $('#hour-11').addClass('future');
+    $('#hour-12').addClass('future');
+    $('#hour-13').addClass('future');
+    $('#hour-14').addClass('future');
+    $('#hour-15').addClass('future');
+    $('#hour-16').addClass('future');
+    $('#hour-17').addClass('future');
   }
   if (currentHour === '10') {
-    $('#9').addClass('past');
-    $('#10').addClass('present');
-    $('#11').addClass('future');
-    $('#12').addClass('future');
-    $('#13').addClass('future');
-    $('#14').addClass('future');
-    $('#15').addClass('future');
-    $('#16').addClass('future');
-    $('#17').addClass('future');
+    $('#hour-9').addClass('past');
+    $('#hour-10').addClass('present');
+    $('#hour-11').addClass('future');
+    $('#hour-12').addClass('future');
+    $('#hour-13').addClass('future');
+    $('#hour-14').addClass('future');
+    $('#hour-15').addClass('future');
+    $('#hour-16').addClass('future');
+    $('#hour-17').addClass('future');
   }
   if (currentHour === '11') {
-    $('#9').addClass('past');
-    $('#10').addClass('past');
-    $('#11').addClass('present');
-    $('#12').addClass('future');
-    $('#13').addClass('future');
-    $('#14').addClass('future');
-    $('#15').addClass('future');
-    $('#16').addClass('future');
-    $('#17').addClass('future');
+    $('#hour-9').addClass('past');
+    $('#hour-10').addClass('past');
+    $('#hour-11').addClass('present');
+    $('#hour-12').addClass('future');
+    $('#hour-13').addClass('future');
+    $('#hour-14').addClass('future');
+    $('#hour-15').addClass('future');
+    $('#hour-16').addClass('future');
+    $('#hour-17').addClass('future');
   }
   if (currentHour === '12') {
-    $('#9').addClass('past');
-    $('#10').addClass('past');
-    $('#11').addClass('past');
-    $('#12').addClass('present');
-    $('#13').addClass('future');
-    $('#14').addClass('future');
-    $('#15').addClass('future');
-    $('#16').addClass('future');
-    $('#17').addClass('future');
+    $('#hour-9').addClass('past');
+    $('#hour-10').addClass('past');
+    $('#hour-11').addClass('past');
+    $('#hour-12').addClass('present');
+    $('#hour-13').addClass('future');
+    $('#hour-14').addClass('future');
+    $('#hour-15').addClass('future');
+    $('#hour-16').addClass('future');
+    $('#hour-17').addClass('future');
   }
 
 
