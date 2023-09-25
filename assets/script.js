@@ -10,14 +10,14 @@ $(function () {
   // useful when saving the description in local storage?
   //
 
-var saveBtn = $('.saveBtn');
+  var saveBtn = $('.saveBtn');
 
-saveBtn.on('click', function(event) {
-  event.preventDefault();
-  var hourX = $(this).parent().attr('id');
-  var todoInput = $(this).parent().eq(1).val();
-  localStorage.setItem(hourX, todoInput);
-})
+  saveBtn.on('click', function (event) {
+    event.preventDefault();
+    var hourX = $(this).parent().attr('id');
+    var todoInput = $(this).parent().children().eq(1).val();
+    localStorage.setItem(hourX, todoInput);
+  })
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -25,62 +25,40 @@ saveBtn.on('click', function(event) {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  var currentHour = dayjs().format('h');
-  console.log(currentHour);
-  if (currentHour === '9') {
-    $('#hour-9').addClass('present');
-    $('#hour-10').addClass('future');
-    $('#hour-11').addClass('future');
-    $('#hour-12').addClass('future');
-    $('#hour-13').addClass('future');
-    $('#hour-14').addClass('future');
-    $('#hour-15').addClass('future');
-    $('#hour-16').addClass('future');
-    $('#hour-17').addClass('future');
-  }
-  if (currentHour === '10') {
-    $('#hour-9').addClass('past');
-    $('#hour-10').addClass('present');
-    $('#hour-11').addClass('future');
-    $('#hour-12').addClass('future');
-    $('#hour-13').addClass('future');
-    $('#hour-14').addClass('future');
-    $('#hour-15').addClass('future');
-    $('#hour-16').addClass('future');
-    $('#hour-17').addClass('future');
-  }
-  if (currentHour === '11') {
-    $('#hour-9').addClass('past');
-    $('#hour-10').addClass('past');
-    $('#hour-11').addClass('present');
-    $('#hour-12').addClass('future');
-    $('#hour-13').addClass('future');
-    $('#hour-14').addClass('future');
-    $('#hour-15').addClass('future');
-    $('#hour-16').addClass('future');
-    $('#hour-17').addClass('future');
-  }
-  if (currentHour === '12') {
-    $('#hour-9').addClass('past');
-    $('#hour-10').addClass('past');
-    $('#hour-11').addClass('past');
-    $('#hour-12').addClass('present');
-    $('#hour-13').addClass('future');
-    $('#hour-14').addClass('future');
-    $('#hour-15').addClass('future');
-    $('#hour-16').addClass('future');
-    $('#hour-17').addClass('future');
-  }
+  function hourUpdater() {
+
+    var currentHour = dayjs().hour();
+    console.log(currentHour);
+
+    $('.time-block').each(function () {
+      var blockHour = parseInt($(this).attr('id').split('-')[1]);
+      if (blockHour < currentHour) {
+        $(this).removeClass('present future').addClass('past');
+      } else if (blockHour === currentHour) {
+        $(this).removeClass('past future').addClass('present')
+      } else if (blockHour > currentHour) {
+        $(this).removeClass('past present').addClass('future')
+      }
+    })
 
 
+  }
 
+  hourUpdater();
+  setInterval(hourUpdater, 15000);
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-  var dateNow = dayjs().format('dddd MMM D, YYYY');
-  $('#currentDay').text(`Today is ${dateNow}`);
 
+
+
+  // TODO: Add code to display the current date in the header of the page.
+  var dateNow = dayjs().format('dddd MMM D, YYYY hh:mm:ssA');
+  setInterval( function() {
+    var dateNow = dayjs().format('dddd MMM D, YYYY hh:mm:ssA');
+    $('#currentDay').text(`Today is ${dateNow}`);
+  }, 1000)
+  $('#currentDay').text(`Today is ${dateNow}`);
 });
