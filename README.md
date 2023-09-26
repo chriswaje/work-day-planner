@@ -18,6 +18,8 @@ Bootstrap for their utility API that was used to design easy-to-use features and
 
 ## Link
 
+https://chriswaje.github.io/work-day-planner/
+
 ## Image(s)
 
 ![](./images/work-day-planner.png)
