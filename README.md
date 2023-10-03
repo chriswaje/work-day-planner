@@ -4,7 +4,7 @@
 
 The purpose of this project is to learn to build a dynamically functioning single day, work planner. By using JavaScript, HTML, CSS, and third-party APIs such as JQuery, Bootstrap, and DayJS, this application displays a keen understanding of how to create an application that displays the current date/time, add items to the local storage, display items that persist from the local storage, and dynamically update an application without users having to manually refresh the page. The application features a save button that allows users to save their items to the correct time block with events that persist until the user clears the application data. The motivation fr this project was to practice utilizing Javascript and third party APIs to become proficient in using local storage, dynamic date/time, and user functionality. This project solves the issue of learning how to use third party APIs as tools to create applications that are simply styled and responsive.
 
-##Installation
+## Installation
 
 N/A
 
